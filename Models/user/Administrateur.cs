@@ -1,0 +1,9 @@
+namespace Models;
+
+public class Administrateur : MembreAssociationClub
+{
+    public override string Nom { get; set; } = null!;
+    public override string Prenom { get; set; } = null!;
+    public override string Email { get; set; } = null!;
+    public override string Password { get; set; } = null!;
+}

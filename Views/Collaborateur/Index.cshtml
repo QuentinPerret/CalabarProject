@@ -1,0 +1,64 @@
+@model IEnumerable<Models.Collaborateur>
+
+@{
+    ViewData["Title"] = "Collaborateur";
+}
+
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Collaborateur
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Utilisateur" asp-action="Index">Utilisateur</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="UtilisateurCommun" asp-action="Index">Utilisateur
+                Commun</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Administrateur" asp-action="Index">Administrateur</a>
+        </li>
+
+    </ul>
+</div>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Collaborateur" asp-action="Edit" asp-route-id="@item.Id">Modifier</a>
+                    <a asp-area="" asp-controller="Collaborateur" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Collaborateur" asp-action="Create">Ajouter un nouveau collaborateur</a>

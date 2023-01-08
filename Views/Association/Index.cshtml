@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Association";
+}
+
+@model IEnumerable<Models.Association>
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Association
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Bureau" asp-action="Index">Bureau</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Club" asp-action="Index">Club</a></li>
+    </ul>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

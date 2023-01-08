@@ -1,0 +1,61 @@
+@model Models.SoftViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Modifier les informations</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TailleBouteilleLitre" class="control-label"></label>
+                <input asp-for="TailleBouteilleLitre" class="form-control" />
+                <span asp-validation-for="TailleBouteilleLitre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantite" class="control-label"></label>
+                <input asp-for="Quantite" class="form-control" />
+                <span asp-validation-for="Quantite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrixAchat" class="control-label"></label>
+                <input asp-for="PrixAchat" class="form-control" />
+                <span asp-validation-for="PrixAchat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrixVente" class="control-label"></label>
+                <input asp-for="PrixVente" class="form-control" />
+                <span asp-validation-for="PrixAchat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssociationId" class="control-label"></label>
+                <select name="AssociationId" id="N.AssociationId">
+                    @foreach (Models.Association asso in Model.A)
+                    {
+                        <option value="@asso.Id">@asso.Nom</option>
+                    }
+                </select>
+                <span asp-validation-for="AssociationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour</a>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

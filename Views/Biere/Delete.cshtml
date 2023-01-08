@@ -1,0 +1,27 @@
+@model Models.Biere
+
+@{
+    ViewData["Title"] = "Supprimer bière";
+}
+
+<h2>Supprimer une bière</h2>
+
+<h4>Etes-vous sûr ? </h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Bière
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+        <a asp-action="Index">Retour</a>
+    </form>
+</div>

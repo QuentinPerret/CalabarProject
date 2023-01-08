@@ -1,0 +1,72 @@
+@model IEnumerable<Models.Nourriture>
+
+@{
+    ViewData["Title"] = "Nourriture";
+}
+
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Nourriture
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Consommable" asp-action="Index">Consommable</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Vin" asp-action="Index">Vin</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Biere" asp-action="Index">Bière</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Soft" asp-action="Index">Softs</a></li>
+    </ul>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixAchat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixVente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Association)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixAchat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixVente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Association.Nom)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Nourriture" asp-action="EditNourriture"
+                    asp-route-id="@item.Id">Modifier</a>
+                    <a asp-area="" asp-controller="Nourriture" asp-action="DeleteNourriture"
+                    asp-route-id="@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Nourriture" asp-action="CreateNourriture">Ajouter un nouvel aliment</a>

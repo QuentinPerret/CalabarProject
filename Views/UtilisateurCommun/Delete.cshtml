@@ -1,0 +1,45 @@
+@model Models.UtilisateurCommun
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Supprimer un utilisateur</h2>
+
+<h4>Etes-vous sûr</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-controller="Utilisateur" asp-action="Index">Retour</a>
+    </form>
+</div>

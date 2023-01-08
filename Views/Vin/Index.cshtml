@@ -1,0 +1,95 @@
+@model IEnumerable<Models.Vin>
+
+@{
+    ViewData["Title"] = "Vin";
+}
+
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Vin
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Consommable" asp-action="Index">Consommable</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Nourriture" asp-action="IndexNourriture">Nourriture</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Biere" asp-action="Index">Bière</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Soft" asp-action="Index">Softs</a></li>
+    </ul>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chateau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeDeVin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Millesime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TailleBouteilleLitre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixAchat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixVente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Association)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Chateau.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeDeVin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Millesime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TailleBouteilleLitre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixAchat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixVente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Association.Nom)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Vin" asp-action="Edit" asp-route-id="@item.Id">Modifier</a>
+                    <a asp-area="" asp-controller="Vin" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Vin" asp-action="Create">Ajouter un nouveau vin</a>

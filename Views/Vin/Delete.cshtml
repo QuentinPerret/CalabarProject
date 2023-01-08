@@ -1,0 +1,27 @@
+@model Models.Vin
+
+@{
+    ViewData["Title"] = "Supprimer vin";
+}
+
+<h2>Supprimer un vin</h2>
+
+<h4>Etes-vous sûr ? </h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Vin
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Chateau)
+        </dd>
+        
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+        <a asp-action="Index">Retour</a>
+    </form>
+</div>

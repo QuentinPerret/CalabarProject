@@ -1,0 +1,52 @@
+@model IEnumerable<Models.Bureau>
+
+
+@{
+    ViewData["Title"] = "Bureau";
+}
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Bureau
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Association" asp-action="Index">Association</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Club" asp-action="Index">Club</a></li>
+    </ul>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Bureau" asp-action="Edit" asp-route-id="@item.Id">Modifier</a>
+                    <a asp-area="" asp-controller="Bureau" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Bureau" asp-action="Create">Ajouter un nouveau bureau</a>

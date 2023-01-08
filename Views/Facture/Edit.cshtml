@@ -1,0 +1,66 @@
+@model Models.FactureViewModel
+
+@{
+    ViewData["Title"] = "Facture";
+}
+
+<h2>Modifier les informations</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrixHT" class="control-label"></label>
+                <input asp-for="PrixHT" class="form-control" />
+                <span asp-validation-for="PrixHT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrixTTC" class="control-label"></label>
+                <input asp-for="PrixTTC" class="form-control" />
+                <span asp-validation-for="PrixTTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FournisseurId" class="control-label"></label>
+                <select name="FournisseurId" id="FournisseurId">
+                    @foreach (Models.Fournisseur fournisseur in Model.F)
+                    {
+                        <option value="@fournisseur.Id">@fournisseur.Nom</option>
+                    }
+                </select>
+                <span asp-validation-for="FournisseurId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssociationId" class="control-label"></label>
+                <select name="AssociationId" id="N.AssociationId">
+                    @foreach (Models.Association asso in Model.A)
+                    {
+                        <option value="@asso.Id">@asso.Nom</option>
+                    }
+                </select>
+                <span asp-validation-for="AssociationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

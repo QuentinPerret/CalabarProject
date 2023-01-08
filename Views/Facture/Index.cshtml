@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "Facture";
+}
+
+@model IEnumerable<Models.Facture>
+
+@{
+    ViewData["Title"] = "Facture";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixHT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixTTC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fournisseur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Association)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixHT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixTTC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fournisseur.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Association.Nom)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Facture" asp-action="Edit" asp-route-id="@item.Id">Modifier</a>
+                    <a asp-area="" asp-controller="Facture" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Facture" asp-action="Create">Ajouter une nouvelle facture</a>

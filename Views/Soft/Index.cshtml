@@ -1,0 +1,78 @@
+@model IEnumerable<Models.Soft>
+
+@{
+    ViewData["Title"] = "Soft";
+}
+
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Soft
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" asp-area="" asp-controller="Consommable" asp-action="Index">Consommable</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Nourriture" asp-action="IndexNourriture">Nourriture</a>
+        </li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Vin" asp-action="Index">Vin</a></li>
+        <li><a class="dropdown-item" asp-area="" asp-controller="Biere" asp-action="Index">Bière</a></li>
+    </ul>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TailleBouteilleLitre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixAchat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixVente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Association)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TailleBouteilleLitre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixAchat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrixVente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Association.Nom)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Soft" asp-action="Edit" asp-route-id="@item.Id">Modifier</a>
+                    <a asp-area="" asp-controller="Soft" asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Soft" asp-action="Create">Ajouter un nouveau soft</a>
